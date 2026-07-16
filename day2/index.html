@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div>
+          <div>
+            <div class="header">
+                <div class="img">
+                <img src="skit.jpeg" alt="slit" width="50ps" height="50px">
+                </div>
+                <div class="heading">
+                <h1> Swami Keshvanand Institute of Technology,
+                 Management & Gramothan</h1>
+                </div>
+                <div>
+                    <button id="themeBtn" onclick="changeTheme()">
+                        🌙 Dark Mode
+                    </button>
+                </div>
+            </div>
+            <div >
+                <h1 class="appl">Application Form 2026-27</h1>
+
+            </div>
+            <div class="nav" >
+                <div>
+               <label for="Name" class="label">Name:</label><br>
+               <input type="text" placeholder="Enter your name" class="input"><br><br>
+               <label for="Father's Name" class="label">Father's Name:</label><br>
+               <input type="text" placeholder="Enter your Father's  Name" 
+               class="input"><br><br>
+               <label for="Mother's Name" class="label">Mother's Name:</label><br>
+               <input type="text" placeholder="Enter your Mother's Name"
+                class="input"><br><br>
+                </div>
+                <div class="box">
+                    <p>Photograph</p>
+                </div>
+            </div>
+            <div class="section">
+            <div>
+                <label for="Date of Birth" class="label">Date of Birth:</label><br>
+                <input type="date" class="input"><br><br>
+            </div>
+            <div class="section-input">
+                <label for="email" class="label">Email:</label><br>
+                <input type="email" placeholder="Enter your email"
+                class="input">
+            </div>
+            </div>
+            <div class="section">
+                <div>
+                    <label for="tel" class="label">Parent's mobile no:</label><br>
+                <input type="tel" placeholder="Enter mobile no" class="input">
+                </div>
+                <div class="section-input">
+                    <label for="tel" class="label">Student Mobile No</label><br>
+                    <input type="tel" placeholder="Enter Mobile No" class="input">
+                </div>
+            </div>
+            <div>
+                <input type="radio" placeholder="gen">
+                <label for=""
+            </div>
+            <div>
+                <h2>ACADEMIC RECORD</h2>
+
+    <table>
+        <tr>
+            <th>Examination</th>
+            <th>Subjects</th>
+            <th>Name of School / College</th>
+            <th>Board / University</th>
+            <th>Year</th>
+            <th>Marks Obtained</th>
+            <th>Max. Marks</th>
+            <th>% or CGPA</th>
+        </tr>
+
+        <tr>
+            <td>Secondary (10<sup>th</sup>)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Sr. Secondary (10 + 2)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Graduation</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        
+    </table>
+
+            </div>
+            <div>
+                <button type="button" class="button">Submit</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script>
+    function changeTheme() {
+
+        document.body.classList.toggle("dark");
+    
+        let btn = document.getElementById("themeBtn");
+    
+        if(document.body.classList.contains("dark")){
+            btn.innerHTML = "☀️ Light Mode";
+        }
+        else{
+            btn.innerHTML = "🌙 Dark Mode";
+        }
+    
+    }
+    </script>
+</body>
+</html>
