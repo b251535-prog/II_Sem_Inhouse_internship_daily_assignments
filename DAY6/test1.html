@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const str = "hello";
+        // const lowercase = str.toLowerCase();
+        // const trimmed = lowercase.trim();
+
+        // str.toLowerCase().trim();
+        const users = fetch('https://jsonplaceholder.tycpicode.com/users');
+        const data = users.then(response => response.json());
+        const users_data= data.then(data => 
+        console.log("users from API:", datalength));
+      
+      
+      
+        // console.log("users from API:", data);
+        // const data = users.trim().then
+        //normal function
+        //    function getUsers(response){
+        //     return response.json();
+        //    }
+        //    //arrow function
+        //    response=>response.json();
+        // .then(res => res.json()).then(data => {
+        // console.log("users from API:",data);
+        // });
+    </script>
+</body>
+
+</html>
