@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future X Tech Summit | July 10</title>
+    <style>
+        /* --- CSS Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Light Theme (Default) */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #10b981;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --input-border: #cbd5e1;
+        }
+
+        /* Dark Theme Attributes */
+        [data-theme="dark"] {
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-light: #0f172a;
+            --white: #1e293b;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --input-border: #475569;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Layout & Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: var(--border-color);
+            color: var(--text-main);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* --- Hero & Split Section --- */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: start;
+            min-height: 90vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .countdown-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            min-width: 85px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Dynamic Event Information Sections --- */
+        .details-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .details-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+
+        /* Timeline / What's Happening */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .time-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Prize Pool Layout */
+        .prize-card {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        .prize-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+            color: #34d399;
+        }
+
+        /* Guests Grid */
+        .guests-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .guest-card {
+            background: var(--card-bg);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .guest-avatar {
+            width: 50px;
+            height: 50px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* --- Registration Form Card --- */
+        .form-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 6rem;
+        }
+
+        .form-card h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.75rem;
+        }
+
+        .form-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--input-border);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* --- Success Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border: 1px solid var(--border-color);
+            animation: scaleUp 0.3s ease forwards;
+        }
+
+        .modal-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-close {
+            margin-top: 1.5rem;
+            padding: 0.5rem 2rem;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* --- Animations & Responsive Breakpoints --- */
+        @keyframes scaleUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 7rem;
+                gap: 4rem;
+            }
+            .countdown {
+                justify-content: center;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .details-section h2 {
+                text-align: left;
+            }
+            .form-card {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .guests-grid { grid-template-columns: 1fr; }
+            .timeline-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">FutureX.</div>
+            <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">
+                🌙 Dark Mode
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero & Content Layout -->
+    <main class="hero">
+        <div class="hero-content">
+            <h1>The Next Era of <span>Tech Innovation</span></h1>
+            <p>Join global industry leaders, developers, and creators on July 10, 2026, for an immersive experience shaping the digital horizon.</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Secs</span>
+                </div>
+            </div>
+
+            <!-- SECTION 1: What will happen -->
+            <div class="details-section">
+                <h2>Event Schedule & Tracks</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div>
+                            <strong>Keynote: Next-Gen AI & Web Ecosystems</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Opening statement on the 2026 technological paradigm shift.</p>
+                        </div>
+                        <span class="time-tag">09:30 AM</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div>
+                            <strong>Live Hackathon Kickoff</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Build, deploy, and scale micro-apps in a 4-hour high-pressure sprint.</p>
+                        </div>
+                        <span class="time-tag">11:00 AM</span>
+                    </div>
+                    <div class="timeline-item">
+                        <div>
+                            <strong>Panel: Decentralized Architectures</strong>
+                            <p style="font-size: 0.9rem; color: var(--text-muted);">Open discourse regarding the current scaling landscape.</p>
+                        </div>
+                        <span class="time-tag">03:00 PM</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Prize Pool -->
+            <div class="details-section">
+                <h2>Mega Hackathon Prize Pool</h2>
+                <div class="prize-card">
+                    <h3>Grand Cumulative Rewards</h3>
+                    <div class="prize-amount">$25,000</div>
+                    <p>Split among Top 3 Innovations + Incubation support slots for Outstanding Developers.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Featured Guests -->
+            <div class="details-section">
+                <h2>Keynote Speakers & Guests</h2>
+                <div class="guests-grid">
+                    <div class="guest-card">
+                        <div class="guest-avatar">🚀</div>
+                        <div>
+                            <strong>Dr. Aris Thorne</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Lead AI Research Architect</p>
+                        </div>
+                    </div>
+                    <div class="guest-card">
+                        <div class="guest-avatar">💻</div>
+                        <div>
+                            <strong>Elena Rostova</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Core Engine Developer</p>
+                        </div>
+                    </div>
+                    <div class="guest-card">
+                        <div class="guest-avatar">🎨</div>
+                        <div>
+                            <strong>Marcus Vance</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Creative Design Director</p>
+                        </div>
+                    </div>
+                    <div class="guest-card">
+                        <div class="guest-avatar">🌐</div>
+                        <div>
+                            <strong>Sarah Jenkins</strong>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);">Venture Capital & Innovation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form Card -->
+        <div class="form-card">
+            <h2>Secure Your Spot</h2>
+            <p>Please enter your identification parameters below to reserve an entry badge.</p>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="userId">Registration / Student ID</label>
+                    <input type="text" id="userId" required placeholder="FX-2026-99X">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="mobileNo">Mobile Number</label>
+                    <input type="tel" id="mobileNo" pattern="[0-9]{10,15}" required placeholder="10-digit mobile number">
+                </div>
+                <div class="form-group">
+                    <label for="trackSelection">Primary Tech Track Preference</label>
+                    <select id="trackSelection" required>
+                        <option value="" disabled selected>Select a track</option>
+                        <option value="ai">Artificial Intelligence & ML</option>
+                        <option value="hackathon">Hackathon Competitor</option>
+                        <option value="design">UI/UX & Frontend Systems</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal Popup -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">✓</div>
+            <h3>Registration Complete!</h3>
+            <p>Your data payload was processed successfully. Check your email inbox for your event entry ticket code.</p>
+            <button class="btn-close" onclick="closeModal()">Awesome</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Theme Changing Logic ---
+        function toggleTheme() {
+            const bodyElement = document.documentElement;
+            const themeBtn = document.getElementById('themeToggleBtn');
+            const currentTheme = bodyElement.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                bodyElement.removeAttribute('data-theme');
+                themeBtn.innerHTML = "🌙 Dark Mode";
+            } else {
+                bodyElement.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = "☀️ Light Mode";
+            }
+        }
+
+        // --- Countdown Timer Logic (Target: July 10, 2026) ---
+        const targetDate = new Date("July 10, 2026 00:00:00").getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                document.getElementById('countdown').innerHTML = "<h3>The Event Has Started!</h3>";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        };
+
+        updateCountdown();
+        const timerInterval = setInterval(updateCountdown, 1000);
+
+        // --- Form Submission Handler ---
+        const form = document.getElementById('registrationForm');
+        const modal = document.getElementById('successModal');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+            
+            // Collect field values 
+            const submissionData = {
+                name: document.getElementById('fullName').value,
+                id: document.getElementById('userId').value,
+                email: document.getElementById('email').value,
+                mobile: document.getElementById('mobileNo').value,
+                track: document.getElementById('trackSelection').value
+            };
+
+            // Log output payload safely to verify operations
+            console.log("Registration Payload Captured Successfully:", submissionData);
+
+            // Display success window smoothly
+            setTimeout(() => {
+                modal.style.display = 'flex';
+                form.reset();
+            }, 150);
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
