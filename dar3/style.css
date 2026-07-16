@@ -1,0 +1,71 @@
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.navbar-nav{
+    text-align: center;
+    width: 600px;
+    
+}
+.hero{
+    display: flex;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.heroh1{
+    font-size: 80px;
+    padding: 40px;
+
+}
+.herop{
+    padding: 50px;
+}
+.herobutton{
+    margin-left: 50px;
+}
+
+.section{
+    text-align: center;
+    font-size: 40px;
+    padding: 25px;
+}
+.text{
+    background-color: antiquewhite;
+}
+.text-center{
+    font-size: 40px;
+    color: red;
+}
+.aside{
+    display: flex;
+    justify-content: space-between;
+}
+.border{
+    border: 3px solid black;
+    width: 50%;
+    margin-top: 60px;
+    margin-left: 60px;
+    margin-bottom: 170px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.footer1{
+    background-color: antiquewhite;
+    display: flex;
+    width: 100%;
+}
+.table1{
+    background-color: antiquewhite;
+    justify-content: space-between;
+    padding: 20px 50px;
+    width: 80%;
+}
+.photo2{
+    width: 30%;
+    height: 40px;
+    padding: 30px 60px;
+}
